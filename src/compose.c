@@ -8050,6 +8050,7 @@ static Compose *compose_create(PrefsAccount *account,
 		gtk_widget_show(window);
 	}
 	
+	claws_mail_osx_set_menu(gtk_ui_manager_get_widget(compose->ui_manager, "/Menu"));
 	return compose;
 }
 

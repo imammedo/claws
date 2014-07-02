@@ -1858,6 +1858,14 @@ else
 	AC_MSG_RESULT(no)
 fi
 
+_gdk_tgt=`$PKG_CONFIG --variable=target gdk-2.0`
+AM_CONDITIONAL([GDK_TARGET_QUARTZ], [test x$_gdk_tgt = xquartz])
+if test "x$_gdk_tgt" = xquartz; then
+	PKG_CHECK_MODULES(GTK_MAC, gtk-mac-integration-gtk2)
+	AC_SUBST(GTK_MAC_LIBS)
+	AC_SUBST(GTK_MAC_CFLAGS)
+fi
+
 dnl And finally the automake conditionals.
 
 AM_CONDITIONAL(BUILD_ACPI_NOTIFIER_PLUGIN,	test x"$enable_acpi_notifier_plugin" != xno)

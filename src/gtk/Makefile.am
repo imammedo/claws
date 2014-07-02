@@ -16,6 +16,8 @@ gtk2_sources = \
 	gtkcmoptionmenu.c
 endif
 
+GTK_CFLAGS += @GTK_MAC_CFLAGS@
+
 libclawsgtk_la_SOURCES = \
 	about.c \
 	colorlabel.c \
@@ -88,7 +90,7 @@ AM_CPPFLAGS = \
 	$(GTK_CFLAGS) \
 	$(ENCHANT_CFLAGS) \
 	-DPLUGINDIR=\"$(PLUGINDIR)\" \
-	-DDOCDIR=\"$(DOCDIR)\" 
+	-DDOCDIR=\"$(DOCDIR)\"
 
 libclawsgtk_la_LIBADD = \
 	../common/libclawscommon.la \
