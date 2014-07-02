@@ -122,6 +122,12 @@ abook_headers = \
 	pine.h \
 	vcard.h
 
+if GDK_TARGET_QUARTZ
+osx_integration_source = cm_osx.c
+osx_integration_CPPFLAGS = @GTK_MAC_CFLAGS@ -xobjective-c
+osx_integration_LDFLAGS = @GTK_MAC_LIBS@ -lobjc
+endif
+
 claws_mail_SOURCES = \
 	account.c \
 	action.c \
@@ -232,7 +238,8 @@ claws_mail_SOURCES = \
 	unmime.c \
 	uri_opener.c \
 	wizard.c \
-	$(abook_source)
+	$(abook_source) \
+	$(osx_integration_source)
 
 claws_mailincludedir = $(pkgincludedir)
 claws_mailinclude_HEADERS = \
@@ -569,7 +576,8 @@ claws_mail_LDADD = \
 	$(STARTUP_NOTIFICATION_LIBS) \
 	$(LIBETPAN_LIBS) \
 	$(DBUS_LIBS) \
-	$(CONTACTS_LIBS)
+	$(CONTACTS_LIBS) \
+	$(osx_integration_LDFLAGS)
 
 pixmapdir=$(datadir)/icons/hicolor/48x48/apps
 
@@ -590,7 +598,8 @@ AM_CPPFLAGS = \
 	$(DBUS_CFLAGS) \
 	$(NETWORKMANAGER_SUPPORT_CFLAGS) \
 	$(VALGRIND_CFLAGS) \
-	$(CONTACTS_CFLAGS)
+	$(CONTACTS_CFLAGS) \
+	$(osx_integration_CPPFLAGS)
 
 #no-unused-function is there because of bison stuff
 #no-deprecated-declarations because of gpgme_data_rewind, which we have

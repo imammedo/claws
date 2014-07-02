@@ -142,6 +142,7 @@
 #include "crash.h"
 
 #include "timing.h"
+#include "cm_osx.h"
 
 #ifdef HAVE_NETWORKMANAGER_SUPPORT
 /* Went offline due to NetworkManager */
@@ -1555,6 +1556,8 @@ int main(int argc, char *argv[])
 					mainwin, TRUE);
 
 	END_TIMING();
+
+	claws_mail_osx_init(mainwin->window);
 
 	gtk_main();
 

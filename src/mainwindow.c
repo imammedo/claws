@@ -93,6 +93,7 @@
 #ifdef G_OS_WIN32
 #include "w32lib.h"
 #endif
+#include "cm_osx.h"
 
 #define AC_LABEL_WIDTH	240
 
@@ -2218,6 +2219,8 @@ MainWindow *main_window_create()
 	if (prefs_common.mainwin_menubar)
 		cm_toggle_menu_set_active_full(mainwin->ui_manager,"Menu/View/ShowHide/MenuBar", TRUE);
 	
+	claws_mail_osx_set_menu(gtk_ui_manager_get_widget(mainwin->ui_manager, "/Menu"));
+
 	return mainwin;
 }
 
