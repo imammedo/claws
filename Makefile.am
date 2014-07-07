@@ -90,3 +90,14 @@ maintainer-clean-local:
 
 ChangeLog: version
 	@./tools/gitlog2changelog.py 3.9.0 > ChangeLog
+
+STAGE_DIR := $(shell mktemp -d -t cm)
+
+bundle:
+if BUILD_OSX_BUNDLE
+	$(MAKE) DESTDIR=$(STAGE_DIR) install; \
+	stage_dir=$(STAGE_DIR) gtk-mac-bundler claws-mail.bundle ; \
+	rm -rf $(STAGE_DIR)
+else
+	echo "install 'gtk-mac-bundler' command to build OS X application bundle"
+endif

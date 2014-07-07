@@ -127,5 +127,8 @@ Makefile.in
 /tags
 /TAGS
 /version
+claws-mail.bundle
+claws-mail.plist
+claws-mail.app
 
 
