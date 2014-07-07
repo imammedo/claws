@@ -1201,6 +1201,7 @@ AM_PATH_PYTHON([2.5], [
 	if test x"$PYTHON_CONFIG" != x""; then
 		PYTHON_CFLAGS=`$PYTHON_CONFIG --includes`
 		PYTHON_LIBS=`$PYTHON_CONFIG --libs`
+		PYTHON_LDFLAGS=`$PYTHON_CONFIG --ldflags`
 		PYTHON_PREFIX=`$PYTHON_CONFIG --prefix`
 		HAVE_PYTHON=yes
 	else
@@ -1211,9 +1212,12 @@ AM_PATH_PYTHON([2.5], [
 	if test x"$HAVE_PYTHON" = xyes; then
 		_save_libs="$LIBS"
 		if test x"$platform_win32" = xno; then
-			# libpython.so
-			PYTHON_SHARED_LIB="libpython${PYTHON_VERSION}.so"
-			LIBS="-ldl"
+			if test x"$PYTHON_PLATFORM" = xdarwin; then
+				PYTHON_SHARED_LIB="libpython${PYTHON_VERSION}.dylib"
+			else
+				PYTHON_SHARED_LIB="libpython${PYTHON_VERSION}.so"
+			fi
+			LIBS="-ldl -rpath ${PYTHON_PREFIX}/lib"
 			AC_MSG_CHECKING([whether to dlopen $PYTHON_SHARED_LIB works])
 			AC_RUN_IFELSE(
 				[AC_LANG_PROGRAM(
@@ -1242,6 +1246,7 @@ AM_PATH_PYTHON([2.5], [
 AC_SUBST(PYTHON_SHARED_LIB)
 AC_SUBST(PYTHON_CFLAGS)
 AC_SUBST(PYTHON_LIBS)
+AC_SUBST(PYTHON_LDFLAGS)
 AC_SUBST(PYGTK_CFLAGS)
 AC_SUBST(PYGTK_LIBS)
 
