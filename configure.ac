@@ -1866,6 +1866,9 @@ if test "x$_gdk_tgt" = xquartz; then
 	AC_SUBST(GTK_MAC_CFLAGS)
 fi
 
+AC_CHECK_PROG(HAVE_GTK_MAC_BUNDLER, [gtk-mac-bundler], [yes])
+AM_CONDITIONAL(BUILD_OSX_BUNDLE, test x"$HAVE_GTK_MAC_BUNDLER" == xyes)
+
 dnl And finally the automake conditionals.
 
 AM_CONDITIONAL(BUILD_ACPI_NOTIFIER_PLUGIN,	test x"$enable_acpi_notifier_plugin" != xno)
@@ -1990,6 +1993,8 @@ manual/de/dist/ps/Makefile
 manual/de/dist/html/Makefile
 manual/de/dist/txt/Makefile
 claws-mail.pc
+claws-mail.plist
+claws-mail.bundle
 ])
 
 dnl Output the configuration summary
