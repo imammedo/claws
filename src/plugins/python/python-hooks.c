@@ -27,6 +27,10 @@
 
 #ifdef ENABLE_PYTHON
 #include <Python.h>
+#ifdef __APPLE__
+#define NO_IMPORT_PYGOBJECT
+#define NO_IMPORT_PYGTK
+#endif
 #include <pygobject.h>
 #include <pygtk/pygtk.h>
 #endif // ENABLE_PYTHON
