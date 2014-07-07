@@ -39,6 +39,7 @@ python_la_LDFLAGS = \
 	$(GLIB_LIBS) \
 	$(GTK_LIBS) \
 	$(PYGTK_LIBS) \
+	$(PYTHON_LDFLAGS) \
 	$(PYTHON_LIBS)
 
 
