@@ -1330,6 +1330,7 @@ static void addressbook_create(void)
 			prefs_common.addressbook_hpaned_pos);
 
 
+	claws_mail_osx_set_menu(menubar);
 	gtk_widget_show_all(window);
 }
 
