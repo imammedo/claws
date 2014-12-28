@@ -61,6 +61,10 @@
      ${prefix}/lib/libpyglib-2.0-python.0.dylib
   </binary>
 
+  <binary dest="${bundle}/Contents/Resources/lib">
+     ${prefix}/lib/enchant/*.so
+  </binary>
+
   <data>
      ${prefix}/lib/python2.7/
   </data>
