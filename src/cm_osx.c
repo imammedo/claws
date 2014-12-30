@@ -19,3 +19,11 @@ void claws_mail_osx_set_menu(GtkWidget *menu)
 	gtk_widget_hide (menu);
 	gtkosx_application_set_menu_bar(theApp, GTK_MENU_SHELL(menu));
 }
+
+void claws_mail_osx_set_empty_menu(GtkWidget *window)
+{
+	GtkWidget *empty_menu = gtk_menu_bar_new();
+	gtk_widget_set_parent(empty_menu, window);
+
+	claws_mail_osx_set_menu(empty_menu);
+}
