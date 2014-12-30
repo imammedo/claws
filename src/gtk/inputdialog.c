@@ -296,6 +296,7 @@ static void input_dialog_create(gboolean is_password)
 	GtkWidget *confirm_area;
 
 	dialog = gtk_dialog_new();
+	claws_mail_osx_set_empty_menu(dialog);
 
 	gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
 	gtk_window_set_default_size(GTK_WINDOW(dialog), 375, 100);
