@@ -54,6 +54,7 @@
 #include "filtering.h"
 #include "prefs_actions.h"
 #include "hooks.h"
+#include "cm_osx.h"
 
 enum {
 	ACCOUNT_IS_DEFAULT,

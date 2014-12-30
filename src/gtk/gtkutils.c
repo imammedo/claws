@@ -59,6 +59,7 @@
 #include "manage_window.h"
 #include "manual.h"
 #include "combobox.h"
+#include "cm_osx.h"
 
 gboolean gtkut_get_font_size(GtkWidget *widget,
 			     gint *width, gint *height)
@@ -1537,6 +1538,7 @@ GtkWidget *gtkut_window_new		(GtkWindowType	 type,
 {
 	GtkWidget *window = gtk_window_new(type);
 	gtk_window_set_role(GTK_WINDOW(window), class);
+	claws_mail_osx_set_empty_menu(window);
 	return window;
 }
 

@@ -33,6 +33,7 @@
 #endif
 
 #include "gtkcmctree.h"
+#include "cm_osx.h"
 
 #ifndef GDK_KEY_Escape
 #include "gdkkeysyms-new.h"
