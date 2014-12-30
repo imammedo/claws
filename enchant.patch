@@ -1,0 +1,26 @@
+diff --git a/src/enchant.c b/src/enchant.c
+index 79fb21c..8a1b100 100644
+--- a/src/enchant.c
++++ b/src/enchant.c
+@@ -251,6 +251,10 @@ enchant_get_module_dirs (void)
+ 		}
+ #endif
+ 
++	module_dir = g_getenv("ENCHANT_MODULE_PATH");
++	if (module_dir)
++		module_dirs = enchant_slist_append_unique_path (module_dirs, g_strdup(module_dir));
++
+ 	return module_dirs;
+ }
+ 
+@@ -291,6 +295,10 @@ enchant_get_conf_dirs (void)
+ 	conf_dirs = enchant_slist_append_unique_path (conf_dirs, g_strdup (ENCHANT_GLOBAL_ORDERING));
+ #endif
+ 
++	ordering_dir = g_getenv("ENCHANT_MODULE_PATH");
++	if (ordering_dir)
++		conf_dirs = enchant_slist_append_unique_path (conf_dirs, g_strdup(ordering_dir));
++
+ 	return conf_dirs;
+ }
+ 

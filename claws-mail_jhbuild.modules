@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+    <include href="http://git.gnome.org/browse/gtk-osx/plain/modulesets-stable/gtk-osx.modules"/>
+
+    <repository type="git" name="github.com" href="https://github.com/"/>
+
+    <autotools id="libetpan">
+	    <branch repo="github.com" module="dinhviethoa/libetpan.git"> </branch>
+    </autotools>
+
+    <tarball id="gnupg" version="1.4.18">
+	    <source href="ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.18.tar.bz2"
+		    sha1sum="41462d1a97f91abc16a0031b5deadc3095ce88ae" />
+    </tarball>
+
+    <tarball id="libgpg-error" version="1.17">
+	    <source href="ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.17.tar.bz2"
+		    sha1sum="ba5858b2947e7272dd197c87bac9f32caf29b256" />
+    </tarball>
+
+    <tarball id="libassuan" version="2.2.0">
+	    <source href="ftp://ftp.gnupg.org/gcrypt/libassuan/libassuan-2.2.0.tar.bz2"
+		    sha1sum="7cf0545955ce414044bb99b871d324753dd7b2e5" />
+    </tarball>
+
+    <tarball id="gpgme" version="1.5.3">
+	    <source href="ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-1.5.3.tar.bz2"
+		    sha1sum="8dd7711a4de117994fe2d45879ef8a9900d50f6a" />
+	    <dependencies>
+		    <dep package="libgpg-error"/>
+		    <dep package="libassuan"/>
+	    </dependencies>
+    </tarball>
+
+    <cmake id="libarchive">
+	    <branch repo="github.com" module="libarchive/libarchive.git"> </branch>
+    </cmake>
+
+    <repository type="tarball" name="www.abisource.com" href="http://www.abisource.com/"/>
+    <autotools id="enchant_env" autogenargs="--with-myspell-dir=/Library/Dictionaries">
+	    <branch repo="www.abisource.com" version="1.6.0" module="downloads/enchant/1.6.0/enchant-1.6.0.tar.gz">
+		    <patch file="mymodules.enchant.patch" strip="1"/>
+	    </branch>
+	    <dependencies>
+		    <dep package="glib"/>
+	    </dependencies>
+    </autotools>
+
+    <autotools id="claws-mail" autogenargs="--disable-notification-plugin --disable-rssyl-plugin">
+	    <branch repo="git.claws-mail.org" module="claws.git"> </branch>
+	    <dependencies>
+		    <dep package="glib"/>
+		    <dep package="gtk+"/>
+		    <dep package="gnutls"/>
+		    <dep package="libetpan"/>
+		    <dep package="enchant_env"/>
+		    <dep package="gnupg"/>
+		    <dep package="gpgme"/>
+		    <dep package="libcurl"/>
+		    <dep package="libarchive"/>
+		    <dep package="meta-gtk-osx-python"/>
+		    <dep package="gtk-mac-integration"/>
+		    <dep package="gtk-quartz-engine"/>
+	    </dependencies>
+    </autotools>
+
+</moduleset>
