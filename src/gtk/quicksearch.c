@@ -256,6 +256,7 @@ static gboolean searchbar_focus_evt_in(GtkWidget *widget, GdkEventFocus *event,
 			      	  QuickSearch *qs)
 {
 	qs->has_focus = TRUE;
+	claws_mail_osx_set_empty_menu(widget);
 	return FALSE;
 }
 
@@ -264,6 +265,9 @@ static gboolean searchbar_focus_evt_out(GtkWidget *widget, GdkEventFocus *event,
 {
 	qs->has_focus = FALSE;
 	qs->in_typing = FALSE;
+	claws_mail_osx_set_menu(gtk_ui_manager_get_widget(
+			mainwindow_get_mainwindow()->ui_manager, "/Menu")
+	);
 	return FALSE;
 }
 
